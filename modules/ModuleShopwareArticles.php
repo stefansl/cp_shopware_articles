@@ -123,7 +123,7 @@ class ModuleShopwareArticles extends \Module
 			}
 		}
 
-		$articles = array_slice($articles, -$this->sw_articlenum, $this->sw_articlenum); // TODO: Werte dynamisch aus Modul
+		$articles = array_slice($articles, -$this->sw_articlenum, $this->sw_articlenum);
 		$articles	=	array_reverse($articles);
 
 		return $articles;
