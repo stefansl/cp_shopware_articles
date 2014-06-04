@@ -13,12 +13,6 @@
 
 
 /**
- * Back end modules
- */
-$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
-
-
-/**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['cp_shopware_articles'] = array('Shopware Article', 'Display articles from your Shopware installation');

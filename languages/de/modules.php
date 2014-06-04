@@ -12,13 +12,8 @@
  */
 
 
-/**
- * Back end modules
- */
-$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
-
 
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['cp_shopware_articles'] = array('Shopware Artikel', 'Artikel aus einer Shopware darstellen');
