@@ -21,7 +21,7 @@ namespace Clickpress\Shopware;
 
 
 /**
- * Class ModulePagepeel
+ * Class ModuleShopwareArticles
  *
  * @copyright  CLICKPRESS Internetagentur
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de>
