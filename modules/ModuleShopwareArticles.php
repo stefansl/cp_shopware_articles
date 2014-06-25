@@ -65,8 +65,11 @@ class ModuleShopwareArticles extends \Module
 	 */
 	protected function compile()
 	{
+		
+		
+	
 		//$start = microtime(TRUE);
-		$client = new ShopwareApiClient($this->sw_url . '/api',$this->sw_apiuser,$this->sw_apikey);
+		$client = new ShopwareApiClient($this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey);
 		//$time = microtime(TRUE) - $start;
 		//echo('<br>API Connect: '.$time);
 
