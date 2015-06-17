@@ -15,5 +15,5 @@
 
 array_insert($GLOBALS['FE_MOD']['miscellaneous'], 9, array
 	(
-		'cp_shopware_articles'    => 'Shopware\ModuleShopwareArticles'
+		'cp_shopware_articles'    => 'ModuleShopwareArticles'
 	));

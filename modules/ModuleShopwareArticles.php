@@ -31,6 +31,7 @@ class ModuleShopwareArticles extends \Module
 
 	/**
 	 * Template
+	 *
 	 * @var string
 	 */
 	protected $strTemplate = 'mod_shopware_articles';
@@ -38,6 +39,7 @@ class ModuleShopwareArticles extends \Module
 
 	/**
 	 * Display a wildcard in the back end
+	 *
 	 * @return string
 	 */
 	public function generate()
@@ -65,12 +67,10 @@ class ModuleShopwareArticles extends \Module
 	protected function compile()
 	{
 
-
 		$client = new ShopwareApiClient($this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey);
 
 		$swarticles = $client->get('articles');
 		$articles = $this->prepareSwArticles($swarticles['data']);
-
 
 		// Get details of filtered
 		$detailedArticles	=	array();

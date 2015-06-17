@@ -14,7 +14,7 @@
  */
 ClassLoader::addNamespaces(array
 (
-	'Clickpress',
+	'CLICKPRESS',
 ));
 
 
