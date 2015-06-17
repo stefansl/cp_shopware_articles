@@ -17,10 +17,6 @@
  * Namespace
  */
 namespace CLICKPRESS;
-/**
- * Run in a custom namespace, so the class can be replaced
- */
-namespace Clickpress;
 
 
 /**
@@ -83,7 +79,6 @@ class ModuleShopwareArticles extends \Module
 			$detail = $client->get('articles/' . $article['id']);
 			$detailedArticles[]	=	$detail['data'];
 		}
-
 
 		// Assign to template
 		$this->Template->articles = $detailedArticles;

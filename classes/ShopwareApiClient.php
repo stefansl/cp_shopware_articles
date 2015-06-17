@@ -6,7 +6,7 @@
  * Time: 14:11
  */
 
-namespace Clickpress\Shopware;
+namespace CLICKPRESS;
 
 
 class ShopwareApiClient

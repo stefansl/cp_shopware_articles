@@ -3,11 +3,9 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2015 Leo Feyer
  *
- * @package Cp_shopware_articles
- * @link    https://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * @license LGPL-3.0+
  */
 
 
@@ -26,10 +24,10 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Modules
-	'Clickpress\ModuleShopwareArticles' => 'system/modules/cp_shopware_articles/modules/ModuleShopwareArticles.php',
+	'CLICKPRESS\ModuleShopwareArticles' => 'system/modules/cp_shopware_articles/modules/ModuleShopwareArticles.php',
 
 	// Classes
-	'Clickpress\ShopwareApiClient'      => 'system/modules/cp_shopware_articles/classes/ShopwareApiClient.php',
+	'CLICKPRESS\ShopwareApiClient'      => 'system/modules/cp_shopware_articles/classes/ShopwareApiClient.php',
 ));
 
 
