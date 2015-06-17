@@ -26,10 +26,10 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Modules
-	'Clickpress\Shopware\ModuleShopwareArticles' => 'system/modules/cp_shopware_articles/modules/ModuleShopwareArticles.php',
+	'Clickpress\ModuleShopwareArticles' => 'system/modules/cp_shopware_articles/modules/ModuleShopwareArticles.php',
 
 	// Classes
-	'Clickpress\Shopware\ShopwareApiClient'      => 'system/modules/cp_shopware_articles/classes/ShopwareApiClient.php',
+	'Clickpress\ShopwareApiClient'      => 'system/modules/cp_shopware_articles/classes/ShopwareApiClient.php',
 ));
 
 

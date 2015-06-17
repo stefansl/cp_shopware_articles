@@ -4,8 +4,6 @@
  * Contao Open Source CMS
  * Copyright (C) 2005-2011 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
- *
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur
  * @author     Stefan Schulz-Lauterbach
@@ -54,5 +52,3 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sw_articlenum'] = array
 	'eval'				=>	array('mandatory' => true, 'tl_class' => 'w50'),
 	'sql'               =>  "varchar(100) NOT NULL default ''"
 );
-
-?>

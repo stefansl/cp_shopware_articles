@@ -4,8 +4,6 @@
  * Contao Open Source CMS
  * Copyright (C) 2005-2011 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
- *
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur
  * @author     Stefan Schulz-Lauterbach
@@ -14,10 +12,15 @@
  * @filesource
  */
 
+
+/**
+ * Namespace
+ */
+namespace CLICKPRESS;
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace Clickpress\Shopware;
+namespace Clickpress;
 
 
 /**
@@ -65,37 +68,21 @@ class ModuleShopwareArticles extends \Module
 	 */
 	protected function compile()
 	{
-		
-		
-	
-		//$start = microtime(TRUE);
+
+
 		$client = new ShopwareApiClient($this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey);
-		//$time = microtime(TRUE) - $start;
-		//echo('<br>API Connect: '.$time);
 
-		// Get all articles and filter
-		//$start = microtime(TRUE);
 		$swarticles = $client->get('articles');
-		//$time = microtime(TRUE) - $start;
-		//echo('<br>Get all articles: '.$time);
-
-		//$start = microtime(TRUE);
 		$articles = $this->prepareSwArticles($swarticles['data']);
-		//$time = microtime(TRUE) - $start;
-		//echo('<br>Filter (function prepareSwArticles): '.$time);
+
 
 		// Get details of filtered
 		$detailedArticles	=	array();
 		foreach ($articles as $article)
 		{
-			//$start = microtime(TRUE);
 			$detail = $client->get('articles/' . $article['id']);
-			// $time = microtime(TRUE) - $start;
-			//echo('<br>Get details: '.$time);
 			$detailedArticles[]	=	$detail['data'];
 		}
-
-
 
 
 		// Assign to template

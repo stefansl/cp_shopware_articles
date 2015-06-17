@@ -2,15 +2,15 @@
 
 /**
  * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
  *
- * Copyright (c) 2005-2014 Leo Feyer
- *
- * @package   ShopwareArticles
- * @author    Stefan Schulz-Lauterbach
- * @license   LGPL
- * @copyright CLICKPRESS Internetagentur 2014
+ * PHP version 5
+ * @copyright  CLICKPRESS Internetagentur
+ * @author     Stefan Schulz-Lauterbach
+ * @package    cp_shopware_articles
+ * @license    LGPL
+ * @filesource
  */
-
 
 
 $GLOBALS['TL_LANG']['tl_module']['sw_url']	=	array('Shopware URL', 'Adresse des Shops, zb. http://shop.demoseite.de');
