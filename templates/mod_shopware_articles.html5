@@ -1,22 +1,30 @@
 
-<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
 
   <?php if ($this->headline): ?>
-    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+    <<?= $this->hl; ?>><?= $this->headline; ?></<?= $this->hl; ?>>
   <?php endif; ?>
+
+    <?php if (isset($this->noArticles)): ?>
+
+        <?= $this->noArticles ?>
+
+    <?php else: ?>
 
 	<ul>
 		<?php foreach($this->articles as $article): ?>
 		<li class="article<?php if(!empty($article['highlight'])) echo ' highlight'; ?>">
-			<h2><?php echo $article['name']; ?></h2>
+			<h2><?= $article['name']; ?></h2>
 			<figure class="image_container">
-				<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?php echo $article['description']; ?>"><img src="<?php echo $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_285x255.' . $article['images'][0]['extension']; ?>" alt="<?php echo $article['name']; ?>" ></a>
-				<figcaption class="caption"><?php echo $article['description']; ?></figcaption>
+				<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?= $article['description']; ?>"><img src="<?= $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_285x255.' . $article['images'][0]['extension']; ?>" alt="<?= $article['name']; ?>" ></a>
+				<figcaption class="caption"><?= $article['description']; ?></figcaption>
 			</figure>
-			<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more">MEHR</a>
+			<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more">MEHR</a>
 		</li>
 		<?php endforeach; ?>
 	</ul>
+
+    <?php endif; ?>
 
 	<pre>
 		<?php //print_r($this->articles); ?>
