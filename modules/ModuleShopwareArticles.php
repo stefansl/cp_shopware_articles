@@ -36,8 +36,8 @@ class ModuleShopwareArticles extends \Module
      * @var string
      */
     protected $strTemplate = 'mod_shopware_articles';
-    protected $articleFile = 'system/modules/cp_shopware_articles/article.json';
-    protected $detailArticleFile = 'system/modules/cp_shopware_articles/detailArticle.json';
+    protected $articleFile = 'system/cache/cp_shopware_articles/article.json';
+    protected $detailArticleFile = 'system/cache/cp_shopware_articles/detailArticle.json';
 
 
     /**
@@ -71,8 +71,14 @@ class ModuleShopwareArticles extends \Module
 
         $file       = new \File( $this->articleFile, true );
         $fileDetail = new \File( $this->detailArticleFile, true );
-        $diff       = time() - $file->__get( 'mtime' );
-        $hours      = round( $diff / 3600 );
+
+        if($file->exists()) {
+            $diff       = time() - $file->__get( 'mtime' );
+            $hours      = round( $diff / 3600 );
+        }else{
+            $hours      = 7;
+        }
+
 
         $detailedArticles = array();
 
@@ -85,6 +91,7 @@ class ModuleShopwareArticles extends \Module
 
             $jsonArticles = json_encode( $articles );
             $file->write( $jsonArticles );
+            $file->close();
 
             // Get details of filtered
             if (!empty($articles)) {
@@ -96,6 +103,7 @@ class ModuleShopwareArticles extends \Module
                 $jsonDetail = json_encode( $detailedArticles );
 
                 $fileDetail->write( $jsonDetail );
+                $fileDetail->close();
 
             } else {
                 $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
@@ -108,17 +116,24 @@ class ModuleShopwareArticles extends \Module
 
         }
 
-        $file->close();
-        $fileDetail->close();
-
         $detailedArticles = ($this->sw_onlyhightlight == 1) ? $this->filterHighlighted( $detailedArticles ) : $detailedArticles;
         $detailedArticles = ($this->sw_articlenum > 0) ? $this->limitArticles( $detailedArticles ) : $detailedArticles;
 
+        // Template
+        if (($this->sw_template != $this->strTemplate) && ($this->sw_template != '')){
+            $this->strTemplate = $this->sw_template;
+            $this->Template = new \FrontendTemplate($this->strTemplate);
+        }
+
+        // Assign to template
         if (!empty($detailedArticles)) {
             $this->Template->articles = $detailedArticles;
         } else {
             $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
         }
+        // Previous and next labels
+        $this->Template->previous = $GLOBALS['TL_LANG']['MSC']['previous'];
+        $this->Template->next = $GLOBALS['TL_LANG']['MSC']['next'];
 
         $this->Template->shopUrl = $this->sw_url;
     }
