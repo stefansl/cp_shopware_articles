@@ -36,5 +36,6 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_shopware_articles' => 'system/modules/cp_shopware_articles/templates',
+    'mod_shopware_articles'        => 'system/modules/cp_shopware_articles/templates',
+    'mod_shopware_articles_slider' => 'system/modules/cp_shopware_articles/templates',
 ));
