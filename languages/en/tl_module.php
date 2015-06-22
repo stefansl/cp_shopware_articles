@@ -17,5 +17,5 @@ $GLOBALS['TL_LANG']['tl_module']['sw_url']	            =	array('Shopware URL', '
 $GLOBALS['TL_LANG']['tl_module']['sw_apiuser']	        =	array('Shopware Username', 'Your Shopware username');
 $GLOBALS['TL_LANG']['tl_module']['sw_apikey']	        =	array('Shopware API-Key', 'The API key according to your shopware user');
 $GLOBALS['TL_LANG']['tl_module']['sw_articlenum']	    =	array('Number of Shopware articles', 'How much of your latest articles do you want to display?');
-$GLOBALS['TL_LANG']['tl_module']['sw_onlyhightlight']   =   array('Only topseller', 'Show only highlighted products');
+$GLOBALS['TL_LANG']['tl_module']['sw_onlyhightlight'] = array( 'Only highlighted', 'Show only highlighted products' );
 $GLOBALS['TL_LANG']['tl_module']['sw_template']         =   array('Template', 'Here you can choose your shopware article template.');
