@@ -26,8 +26,4 @@
 
     <?php endif; ?>
 
-	<pre>
-		<?php //print_r($this->articles); ?>
-	</pre>
-
 </div>
