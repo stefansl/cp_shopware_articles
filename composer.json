@@ -1,0 +1,43 @@
+{
+  "name": "clickpress/cp_shopware_articles",
+  "description": "Frontend module for Contao. Fetch last articles from your Shopware shop and display them on your Contao installation.",
+  "keywords": [
+    "contao",
+    "extension",
+    "shopware",
+    "shop",
+    "shop-connector"
+  ],
+  "type": "contao-module",
+  "homepage": "https://github.com/stefansl/cp_shopware_articles",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Stefan Schulz-Lauterbach",
+      "homepage": "http://clickpress.de",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/stefansl/cp_shopware_articles/issues",
+    "source": "https://github.com/stefansl/cp_shopware_articles"
+  },
+  "require": {
+    "php": ">=5.3",
+    "contao/core": ">=3,<4",
+    "contao-community-alliance/composer-installer": "*"
+  },
+  "autoload": {
+    "classmap": [""]
+  },
+  "replace": {
+    "contao-legacy/divider": "*"
+  },
+  "extra": {
+    "contao": {
+      "sources": {
+        "divider": "system/modules/cp_shopware_articles"
+      }
+    }
+  }
+}
