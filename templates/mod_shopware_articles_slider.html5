@@ -29,7 +29,7 @@ $perRow = 4;
                         <div class="slide block">
                     <?php endif; ?>
 
-                    <div class="slide-item" style="width: 24%;margin-right: 3px;float: left;">
+                    <div class="slide-item" style="width: <?= (100/$perRow)-1 ?>%;margin-right: 3px;float: left;">
                         <h2><?= $article['name']; ?></h2>
                         <figure class="image_container">
                             <a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>"
