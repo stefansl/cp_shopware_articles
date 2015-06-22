@@ -36,6 +36,8 @@ class ModuleShopwareArticles extends \Module
      * @var string
      */
     protected $strTemplate = 'mod_shopware_articles';
+    protected $articleFile = 'system/modules/cp_shopware_articles/article.json';
+    protected $detailArticleFile = 'system/modules/cp_shopware_articles/detailArticle.json';
 
 
     /**
@@ -46,12 +48,12 @@ class ModuleShopwareArticles extends \Module
     public function generate()
     {
         if (TL_MODE == 'BE') {
-            $objTemplate = new \BackendTemplate( 'be_wildcard' );
+            $objTemplate        = new \BackendTemplate( 'be_wildcard' );
 
             $objTemplate->wildcard = '### SHOPWARE ARTICLES ###';
-            $objTemplate->title    = $this->name;
+            $objTemplate->title = $this->name;
 
-            $objTemplate->id   = $this->id;
+            $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
             $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
 
@@ -67,27 +69,50 @@ class ModuleShopwareArticles extends \Module
     protected function compile()
     {
 
-        $client = new ShopwareApiClient( $this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey );
+        $file       = new \File( $this->articleFile, true );
+        $fileDetail = new \File( $this->detailArticleFile, true );
+        $diff       = time() - $file->__get( 'mtime' );
+        $hours      = round( $diff / 3600 );
 
-        $swarticles = $client->get( 'articles' );
-        $articles   = $this->prepareSwArticles( $swarticles['data'] );
-
-
-        $articles = ($this->sw_onlyhightlight == 1) ? $this->filterHighlighted( $articles ) : $articles;
-        $articles = ($this->sw_articlenum > 0) ? $this->limitArticles( $articles ) : $articles;
-
-
-        // Get details of filtered
         $detailedArticles = array();
 
-        if (!empty($articles)) {
-            foreach ($articles as $article) {
-                $detail             = $client->get( 'articles/' . $article['id'] );
-                $detailedArticles[] = $detail['data'];
+        if ($hours > 6 || !$file->exists() || !$fileDetail->exists()) {
+
+            $client = new ShopwareApiClient( $this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey );
+
+            $swarticles = $client->get( 'articles' );
+            $articles   = $this->prepareSwArticles( $swarticles['data'] );
+
+            $jsonArticles = json_encode( $articles );
+            $file->write( $jsonArticles );
+
+            // Get details of filtered
+            if (!empty($articles)) {
+                foreach ($articles as $article) {
+                    $detail             = $client->get( 'articles/' . $article['id'] );
+                    $detailedArticles[] = $detail['data'];
+                }
+
+                $jsonDetail = json_encode( $detailedArticles );
+
+                $fileDetail->write( $jsonDetail );
+
+            } else {
+                $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
             }
+
         } else {
-            $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
+
+            $jsonDetail       = $fileDetail->getContent();
+            $detailedArticles = json_decode( $jsonDetail, true );
+
         }
+
+        $file->close();
+        $fileDetail->close();
+
+        $detailedArticles = ($this->sw_onlyhightlight == 1) ? $this->filterHighlighted( $detailedArticles ) : $detailedArticles;
+        $detailedArticles = ($this->sw_articlenum > 0) ? $this->limitArticles( $detailedArticles ) : $detailedArticles;
 
         if (!empty($detailedArticles)) {
             $this->Template->articles = $detailedArticles;
@@ -105,7 +130,7 @@ class ModuleShopwareArticles extends \Module
     {
 
         $datetime = new \DateTime();
-        $now      = $datetime->format( \DateTime::ISO8601 );
+        $now = $datetime->format( \DateTime::ISO8601 );
 
         foreach ($articles as $k => $v) {
             // Sort out inactive
