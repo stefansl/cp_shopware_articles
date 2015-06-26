@@ -88,6 +88,8 @@ class tl_module_shopware_articles extends Backend
      */
     public function getTemplates()
     {
-        return $this->getTemplateGroup('mod_shopware');
+        $tmplGrp = $this->getTemplateGroup('mod_shopware');
+
+        return $tmplGrp;
     }
 }
