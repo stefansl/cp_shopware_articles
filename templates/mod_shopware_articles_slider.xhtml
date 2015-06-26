@@ -1,0 +1,62 @@
+<?php
+		//How much items per slide?
+		$perRow = 4;
+		?>
+<div
+		class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
+
+		<?php if ($this->headline): ?>
+<<?= $this->hl; ?>><?= $this->headline; ?></<?= $this->hl; ?>>
+		<?php endif; ?>
+
+		<?php if (isset($this->noArticles)): ?>
+
+		<?= $this->noArticles ?>
+
+		<?php else: ?>
+
+<div class="ce_sliderStart first block">
+<div class="content-slider" data-config="5000,300,1,1">
+	<div class="slider-wrapper">
+		<?php $i = 0;
+				$count   = 0;
+				$total   = count( $this->articles ); ?>
+		<?php foreach ($this->articles as $article): ?>
+
+		<?php $i++;
+				$count++; ?>
+		<?php if ($i == 1): ?>
+		<div class="slide block">
+			<?php endif; ?>
+
+			<div class="slide-item" style="width: <?= (100/$perRow)-1 ?>%;margin-right: 3px;float: left;">
+				<h2><?= $article['name']; ?></h2>
+				<figure class="image_container">
+					<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>"
+					   data-lightbox="sw_articles" title="<?= $article['description']; ?>"><img
+							src="<?= $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_285x255.' . $article['images'][0]['extension']; ?>"
+							alt="<?= $article['name']; ?>"></a>
+					<figcaption class="caption"><?= $article['description']; ?></figcaption>
+				</figure>
+			</div>
+
+			<?php if ($i == $perRow || $total == $count): ?>
+		</div>
+		<?php $i = 0; endif; ?>
+
+		<?php endforeach; ?>
+	</div>
+</div>
+
+<div class="slider-control">
+	<a href="#" class="slider-prev"><?= $this->previous ?></a>
+	<span class="slider-menu"></span>
+	<a href="#" class="slider-next"><?= $this->next ?></a>
+</div>
+
+</div>
+
+		<?php endif; ?>
+
+
+		</div>
