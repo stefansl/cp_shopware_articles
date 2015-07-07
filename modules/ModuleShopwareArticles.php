@@ -27,6 +27,11 @@ namespace CLICKPRESS;
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de>
  * @package    Controller
  */
+/**
+ * Class ModuleShopwareArticles
+ *
+ * @package CLICKPRESS
+ */
 class ModuleShopwareArticles extends \Module
 {
 
@@ -37,6 +42,9 @@ class ModuleShopwareArticles extends \Module
      */
     protected $strTemplate = 'mod_shopware_articles';
     protected $articleFile = 'system/cache/cp_shopware_articles/article.json';
+    /**
+     * @var string
+     */
     protected $detailArticleFile = 'system/cache/cp_shopware_articles/detailArticle.json';
 
 
@@ -79,9 +87,9 @@ class ModuleShopwareArticles extends \Module
             $hours = 7;
         }
 
-
         $detailedArticles = array();
 
+        // Load and cache json
         if ($hours > 6 || !$file->exists() || !$fileDetail->exists()) {
 
             $client = new ShopwareApiClient($this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey);
@@ -99,6 +107,7 @@ class ModuleShopwareArticles extends \Module
                 $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
             }
 
+            // Use cached json
         } else {
 
             $jsonDetail = $fileDetail->getContent();
@@ -130,8 +139,13 @@ class ModuleShopwareArticles extends \Module
         $this->Template->shopUrl = $this->sw_url;
     }
 
+
     /**
      * Prepare article array
+     *
+     * @param $articles
+     *
+     * @return mixed
      */
     protected function prepareSwArticles($articles)
     {
@@ -158,40 +172,13 @@ class ModuleShopwareArticles extends \Module
     }
 
     /**
-     * Sort out last articles
-     */
-    protected function filterHighlighted($articles)
-    {
-
-        foreach ($articles as $k => $v) {
-            // Sort out not highlighted articles
-            if ($v['highlight'] != 1) {
-                unset($articles[$k]);
-            }
-        }
-
-        return $articles;
-    }
-
-    /**
-     * Sort out last articles
-     */
-    protected function limitArticles($articles)
-    {
-        if (!empty($articles)) {
-            $articles = array_slice($articles, -$this->sw_articlenum, $this->sw_articlenum);
-            $articles = array_reverse($articles);
-        }
-
-        return $articles;
-    }
-
-    /**
      * Get detailed article data
+     *
      * @param $articles
      * @param $client
      * @param $fileDetail
-     * @return array
+     *
+*@return array
      */
     protected function getDetailedArticles($articles, $client, $fileDetail)
     {
@@ -211,6 +198,43 @@ class ModuleShopwareArticles extends \Module
         }
 
         return false;
+    }
+
+    /**
+     * Sort out last articles
+     *
+     * @param $articles
+     *
+     * @return mixed
+     */
+    protected function filterHighlighted( $articles )
+    {
+
+        foreach ($articles as $k => $v) {
+            // Sort out not highlighted articles
+            if ($v['highlight'] != 1) {
+                unset($articles[$k]);
+            }
+        }
+
+        return $articles;
+    }
+
+    /**
+     * Limit article collection
+     *
+*@param $articles
+     *
+     * @return array
+     */
+    protected function limitArticles($articles)
+    {
+        if (!empty($articles)) {
+            $articles = array_slice( $articles, -$this->sw_articlenum, $this->sw_articlenum );
+            $articles = array_reverse( $articles);
+        }
+
+        return $articles;
     }
 
 
