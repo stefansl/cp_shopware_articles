@@ -27,11 +27,6 @@ namespace CLICKPRESS;
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de>
  * @package    Controller
  */
-/**
- * Class ModuleShopwareArticles
- *
- * @package CLICKPRESS
- */
 class ModuleShopwareArticles extends \Module
 {
 
@@ -56,7 +51,7 @@ class ModuleShopwareArticles extends \Module
     public function generate()
     {
         if (TL_MODE == 'BE') {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate        = new \BackendTemplate( 'be_wildcard' );
 
             $objTemplate->wildcard = '### SHOPWARE ARTICLES ###';
             $objTemplate->title = $this->name;
@@ -77,12 +72,12 @@ class ModuleShopwareArticles extends \Module
     protected function compile()
     {
 
-        $file = new \File($this->articleFile, true);
-        $fileDetail = new \File($this->detailArticleFile, true);
+        $file                 = new \File( $this->articleFile, true );
+        $fileDetail           = new \File( $this->detailArticleFile, true );
 
         if ($file->exists()) {
-            $diff = time() - $file->__get('mtime');
-            $hours = round($diff / 3600);
+            $diff  = time() - $file->__get( 'mtime' );
+            $hours = round( $diff / 3600 );
         } else {
             $hours = 7;
         }
@@ -92,16 +87,16 @@ class ModuleShopwareArticles extends \Module
         // Load and cache json
         if ($hours > 6 || !$file->exists() || !$fileDetail->exists()) {
 
-            $client = new ShopwareApiClient($this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey);
+            $client = new ShopwareApiClient( $this->sw_url . '/api', $this->sw_apiuser, $this->sw_apikey );
 
-            $swarticles = $client->get('articles');
-            $articles = $this->prepareSwArticles($swarticles['data']);
+            $swarticles = $client->get( 'articles' );
+            $articles   = $this->prepareSwArticles( $swarticles['data'] );
 
-            $jsonArticles = json_encode($articles);
-            $file->write($jsonArticles);
+            $jsonArticles = json_encode( $articles );
+            $file->write( $jsonArticles );
             $file->close();
 
-            $detailedArticles = $this->getDetailedArticles($articles, $client, $fileDetail);
+            $detailedArticles = $this->getDetailedArticles( $articles, $client, $fileDetail );
 
             if ($detailedArticles === false) {
                 $this->Template->noArticles = $GLOBALS['TL_LANG']['MSC']['no_articles'];
@@ -110,8 +105,8 @@ class ModuleShopwareArticles extends \Module
             // Use cached json
         } else {
 
-            $jsonDetail = $fileDetail->getContent();
-            $detailedArticles = json_decode($jsonDetail, true);
+            $jsonDetail       = $fileDetail->getContent();
+            $detailedArticles = json_decode( $jsonDetail, true );
 
         }
 
@@ -119,13 +114,13 @@ class ModuleShopwareArticles extends \Module
         // Template
         if (($this->sw_template != $this->strTemplate) && ($this->sw_template != '')) {
             $this->strTemplate = $this->sw_template;
-            $this->Template = new \FrontendTemplate($this->strTemplate);
+            $this->Template   = new \FrontendTemplate( $this->strTemplate );
         }
 
         if (!empty($detailedArticles)) {
 
-            $detailedArticles = ($this->sw_onlyhightlight == 1) ? $this->filterHighlighted($detailedArticles) : $detailedArticles;
-            $detailedArticles = ($this->sw_articlenum > 0) ? $this->limitArticles($detailedArticles) : $detailedArticles;
+            $detailedArticles = ($this->sw_onlyhightlight == 1) ? $this->filterHighlighted( $detailedArticles ) : $detailedArticles;
+            $detailedArticles = ($this->sw_articlenum > 0) ? $this->limitArticles( $detailedArticles ) : $detailedArticles;
 
             $this->Template->articles = $detailedArticles;
         } else {
@@ -147,11 +142,11 @@ class ModuleShopwareArticles extends \Module
      *
      * @return mixed
      */
-    protected function prepareSwArticles($articles)
+    protected function prepareSwArticles( $articles )
     {
 
         $datetime = new \DateTime();
-        $now = $datetime->format(\DateTime::ISO8601);
+        $now = $datetime->format( \DateTime::ISO8601 );
 
         foreach ($articles as $k => $v) {
             // Sort out inactive
@@ -178,21 +173,22 @@ class ModuleShopwareArticles extends \Module
      * @param $client
      * @param $fileDetail
      *
-*@return array
+     * @return array
      */
-    protected function getDetailedArticles($articles, $client, $fileDetail)
+    protected function getDetailedArticles( $articles, $client, $fileDetail )
     {
 
         if (!empty($articles)) {
             foreach ($articles as $article) {
-                $detail = $client->get('articles/' . $article['id']);
+                $detail = $client->get( 'articles/' . $article['id'] );
                 $detailedArticles[] = $detail['data'];
             }
 
-            $jsonDetail = json_encode($detailedArticles);
+            $jsonDetail = json_encode( $detailedArticles );
 
-            $fileDetail->write($jsonDetail);
+            $fileDetail->write( $jsonDetail );
             $fileDetail->close();
+
             return $detailedArticles;
 
         }
@@ -223,15 +219,15 @@ class ModuleShopwareArticles extends \Module
     /**
      * Limit article collection
      *
-*@param $articles
+     * @param $articles
      *
      * @return array
      */
-    protected function limitArticles($articles)
+    protected function limitArticles( $articles )
     {
         if (!empty($articles)) {
             $articles = array_slice( $articles, -$this->sw_articlenum, $this->sw_articlenum );
-            $articles = array_reverse( $articles);
+            $articles = array_reverse( $articles );
         }
 
         return $articles;
