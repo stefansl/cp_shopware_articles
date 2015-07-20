@@ -31,12 +31,12 @@
     "classmap": [""]
   },
   "replace": {
-    "contao-legacy/divider": "*"
+    "contao-legacy/cp_shopware_articles": "*"
   },
   "extra": {
     "contao": {
       "sources": {
-        "divider": "system/modules/cp_shopware_articles"
+        "cp_shopware_articles": "system/modules/cp_shopware_articles"
       }
     }
   }
