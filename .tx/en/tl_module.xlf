@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2015-06-22T16:41:34+02:00" original="tl_module" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="tl_module.sw_url.0">
+        <source>Shopware URL</source>
+        <target>Shopware URL</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_url.1">
+        <source>Domain to your shopware, f.e. http://shop.demosite.com</source>
+        <target>Domain to your shopware, f.e. http://shop.demosite.com</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_apiuser.0">
+        <source>Shopware Username</source>
+        <target>Shopware Username</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_apiuser.1">
+        <source>Your Shopware username</source>
+        <target>Your Shopware username</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_apikey.0">
+        <source>Shopware API-Key</source>
+        <target>Shopware API-Key</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_apikey.1">
+        <source>The API key according to your shopware user</source>
+        <target>The API key according to your shopware user</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_articlenum.0">
+        <source>Number of Shopware articles</source>
+        <target>Number of Shopware articles</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_articlenum.1">
+        <source>How much of your latest articles do you want to display?</source>
+        <target>How much of your latest articles do you want to display?</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_onlyhightlight.0">
+        <source>Only highlighted</source>
+        <target>Only highlighted</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_onlyhightlight.1">
+        <source>Show only highlighted products</source>
+        <target>Show only highlighted products</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_template.0">
+        <source>Template</source>
+        <target>Template</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_template.1">
+        <source>Here you can choose your shopware article template.</source>
+        <target>Here you can choose your shopware article template.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
