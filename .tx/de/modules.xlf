@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2015-06-17T09:51:38+02:00" original="modules" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="FMD.cp_shopware_articles.0">
+        <source>Shopware Article</source>
+        <target>Shopware Artikel</target>
+      </trans-unit>
+      <trans-unit id="FMD.cp_shopware_articles.1">
+        <source>Display articles from your Shopware installation</source>
+        <target>Artikel aus einer Shopware darstellen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
