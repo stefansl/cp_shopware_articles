@@ -19,7 +19,7 @@
 				<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?= $article['description']; ?>"><img src="<?= $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_' . $this->sw_imgsize . '.' . $article['images'][0]['extension']; ?>" alt="<?= $article['name']; ?>" ></a>
 				<figcaption class="caption"><?= $article['description']; ?></figcaption>
 			</figure>
-			<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more">MEHR</a>
+			<a href="<?= $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more"><?= $GLOBALS['TL_LANG']['MSC']['more'] ?></a>
 		</li>
 		<?php endforeach; ?>
 	</ul>

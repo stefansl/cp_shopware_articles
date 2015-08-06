@@ -12,7 +12,7 @@
 		<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?php echo $article['description']; ?>"><img src="<?php echo $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_' . $this->sw_imgsize . '.' . $article['images'][0]['extension']; ?>" alt="<?php echo $article['name']; ?>" ></a>
 		<span class="caption"><?php echo $article['description']; ?></span>
 	</div>
-	<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more">MEHR</a>
+	<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more"><?= $GLOBALS['TL_LANG']['MSC']['more'] ?></a>
 </li>
 <?php endforeach; ?>
 </ul>
