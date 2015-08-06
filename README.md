@@ -1,3 +1,5 @@
+[![Version](http://img.shields.io/packagist/v/stefansl/cp_shopware_articles.svg?style=flat-square)](http://packagist.com/packages/stefansl/cp_shopware_articles)  [![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/stefansl/cp_shopware_articles/master/LICENSE)
+
 ShopwareArticles
 ====================
 
