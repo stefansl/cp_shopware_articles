@@ -132,6 +132,7 @@ class ModuleShopwareArticles extends \Module
         $this->Template->next = $GLOBALS['TL_LANG']['MSC']['next'];
 
         $this->Template->shopUrl = $this->sw_url;
+        $this->Template->sw_imgsize = $this->sw_imgsize;
     }
 
 

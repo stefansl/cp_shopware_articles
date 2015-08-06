@@ -9,7 +9,7 @@
 <li class="article<?php if(!empty($article['highlight'])) echo ' highlight'; ?>">
 	<h2><?php echo $article['name']; ?></h2>
 	<div class="image_container">
-		<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?php echo $article['description']; ?>"><img src="<?php echo $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_285x255.' . $article['images'][0]['extension']; ?>" alt="<?php echo $article['name']; ?>" ></a>
+		<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" data-lightbox="sw_articles" title="<?php echo $article['description']; ?>"><img src="<?php echo $this->shopUrl . '/media/image/thumbnail/' . $article['images'][0]['path'] . '_' . $this->sw_imgsize . '.' . $article['images'][0]['extension']; ?>" alt="<?php echo $article['name']; ?>" ></a>
 		<span class="caption"><?php echo $article['description']; ?></span>
 	</div>
 	<a href="<?php echo $this->shopUrl . '/detail/index/sArticle/' . $article['id']; ?>" class="more">MEHR</a>

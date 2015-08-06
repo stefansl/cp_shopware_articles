@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file datatype="php" date="2015-07-21T14:09:05+02:00" original="tl_module" source-language="en" target-language="fr">
+  <file datatype="php" date="2015-08-06T15:12:00+02:00" original="tl_module" source-language="en" target-language="fr">
     <body>
       <trans-unit id="tl_module.sw_url.0">
         <source>Shopware URL</source>
@@ -37,6 +37,12 @@
       </trans-unit>
       <trans-unit id="tl_module.sw_template.1">
         <source>Here you can choose your shopware article template.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_imgsize.0">
+        <source>Imagesize from your Shopware</source>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_imgsize.1">
+        <source>An existing image size can be read in your Shopware folder. If you have an image /media/image/thumbnail/SW_***_200x200.jpg, you can type here 200x200</source>
       </trans-unit>
     </body>
   </file>

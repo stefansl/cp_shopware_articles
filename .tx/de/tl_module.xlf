@@ -50,6 +50,14 @@
         <source>Here you can choose your shopware article template.</source>
         <target>Hier können Sie das Shopware Artikel Template auswählen.</target>
       </trans-unit>
+      <trans-unit id="tl_module.sw_imgsize.0">
+        <source>Imagesize from your Shopware</source>
+        <target>Bildgröße in der Shopware</target>
+      </trans-unit>
+      <trans-unit id="tl_module.sw_imgsize.1">
+        <source>An existing image size can be read in your Shopware folder. If you have an image /media/image/thumbnail/SW_***_200x200.jpg, you can type here 200x200</source>
+        <target>Eine vorhandene Bildabmessung kann in der Shopware z.B. im Ordner /media/image/thumbnail/ ausgelesen werden. Wenn das Bild SW_***_200x200.jpg vorhanden ist, dann kann hier 200x200 eingetragen werden</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

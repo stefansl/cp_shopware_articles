@@ -15,15 +15,26 @@
 /**
 * Add palettes to tl_module
 */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['cp_shopware_articles']    = '{title_legend},name,headline,type;{config_legend},sw_url,sw_apiuser,sw_apikey,sw_articlenum,sw_onlyhightlight;{redirect_legend},;{template_legend:hide},sw_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['cp_shopware_articles']    = '{title_legend},name,headline,type;{config_legend},sw_url,sw_imgsize,sw_apiuser,sw_apikey,sw_articlenum,sw_onlyhightlight;{redirect_legend},;{template_legend:hide},sw_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sw_url'] = array
 (
-	'label'				=>	&$GLOBALS['TL_LANG']['tl_module']['sw_url'],
-	'exclude'			=>	true,
-	'inputType'         =>	'text',
-	'eval'				=>	array('mandatory' => true, 'rgxp' => 'url', 'tl_class' => 'w50'),
-	'sql'               =>  "varchar(100) NOT NULL default ''"
+    'label'				=>	&$GLOBALS['TL_LANG']['tl_module']['sw_url'],
+    'exclude'			=>	true,
+    'inputType'         =>	'text',
+    'eval'				=>	array('mandatory' => true, 'rgxp' => 'url', 'tl_class' => 'w50'),
+    'sql'               =>  "varchar(100) NOT NULL default ''"
+);
+
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['sw_imgsize'] = array
+(
+    'label'				=>	&$GLOBALS['TL_LANG']['tl_module']['sw_imgsize'],
+    'exclude'			=>	true,
+    'inputType'         =>	'text',
+    'default'           =>  '200x200',
+    'eval'				=>	array('mandatory' => true, 'tl_class' => 'w50'),
+    'sql'               =>  "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sw_apiuser'] = array
