@@ -36,8 +36,17 @@ class ModuleShopwareArticles extends \Module
      * @var string
      */
     protected $strTemplate = 'mod_shopware_articles';
-    protected $articleFile = 'system/cache/cp_shopware_articles/article.json';
+
     /**
+     * Article cache
+     *
+     * @var string
+     */
+    protected $articleFile = 'system/cache/cp_shopware_articles/article.json';
+
+    /**
+     * Detail cache
+     *
      * @var string
      */
     protected $detailArticleFile = 'system/cache/cp_shopware_articles/detailArticle.json';
@@ -76,7 +85,7 @@ class ModuleShopwareArticles extends \Module
         $fileDetail           = new \File( $this->detailArticleFile, true );
 
         if ($file->exists()) {
-            $diff  = time() - $file->__get( 'mtime' );
+            $diff  = time() - $file->mtime;;
             $hours = round( $diff / 3600 );
         } else {
             $hours = 7;
